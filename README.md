@@ -231,7 +231,7 @@ For the full Python guide, see [`python/README.md`](python/README.md).
 <img src="assets/img/hand-landmarks.svg" alt="A numbered map of the 21 hand landmarks: wrist 0, thumb tip 4, index tip 8, middle tip 12, ring tip 16, pinky tip 20." width="440">
 </div>
 
-GitHub renders Markdown as text, so the diagram above is static here. On the live site, the same skeleton is **fully interactive 3D** — drag to orbit, scroll to zoom, click any numbered point for its name and role, or take a guided tour: **[Open the 3D anatomy explorer →](https://m0-ar.github.io/hand_fingers_tracking/#anatomy)**
+GitHub does not run JavaScript in README files, so the diagram above is static here. On the live site, the same skeleton is **fully interactive 3D** — drag to orbit, scroll to zoom, click any numbered point for its name and role, or take a guided tour: **[Open the 3D anatomy explorer →](https://m0-ar.github.io/hand_fingers_tracking/#anatomy)**
 
 A **landmark** is simply a named point on the hand. The model returns 21 of them for every frame in which it sees a hand.
 
