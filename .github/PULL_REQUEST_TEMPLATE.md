@@ -10,8 +10,10 @@
 
 <!--
 List the commands, browsers, or devices you used. Examples:
-- python3 -m py_compile *.py
+- python3 -m py_compile python/*.py
 - node --check assets/js/core.js
+- node --input-type=module --check < assets/js/scene.js
+- python3 -m unittest discover -s tests -v
 - Opened preview.html in Chrome with mouse mode and no console errors
 -->
 

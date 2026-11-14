@@ -47,9 +47,16 @@ python3 python/basic_tracking.py
 Run these checks before opening a pull request:
 
 ```bash
-python3 -m py_compile *.py
+python3 -m py_compile python/*.py
 node --check assets/js/core.js
 node --input-type=module --check < assets/js/scene.js
+python3 -m unittest discover -s tests -v
+```
+
+Or run the whole suite with:
+
+```bash
+make check
 ```
 
 Then verify in a browser:
