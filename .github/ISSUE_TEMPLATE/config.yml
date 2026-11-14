@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Live demo
+    url: https://m0-ar.github.io/hand_fingers_tracking/
+    about: Try the interactive laboratory, game, quiz, and business model before opening an issue.
+  - name: Security report
+    url: https://github.com/M0-AR/hand_fingers_tracking/security/policy
+    about: Please report security issues privately, not as a public issue.
+  - name: Contributing guide
+    url: https://github.com/M0-AR/hand_fingers_tracking/blob/main/CONTRIBUTING.md
+    about: Read the development setup, verification steps, and claims policy.

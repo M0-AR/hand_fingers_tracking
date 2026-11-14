@@ -13,7 +13,7 @@ mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
 
 # Create output directory
-os.mkdir('Output Images')
+os.makedirs('Output Images', exist_ok=True)
 
 # Initialize video capture
 cap = cv2.VideoCapture(0)

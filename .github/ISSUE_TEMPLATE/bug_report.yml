@@ -1,0 +1,91 @@
+name: Bug report
+description: Report a reproducible problem in the browser experience or a Python demo.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a problem. This project is a research prototype, not a medical device.
+        Please do not use it for diagnosis, treatment, or control of unsafe equipment.
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe the actual behaviour and why it is a problem.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open ...
+        2. Click ...
+        3. Observe ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Browser — Live Lab
+        - Browser — Precision Game
+        - Browser — Quiz / learning path
+        - Browser — Layout / mobile
+        - Python demo
+        - Bluetooth bridge
+        - Documentation
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Browser or Python version, operating system, and device.
+      placeholder: "Chrome 131 on macOS 15, MacBook Air M2"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: camera
+    attributes:
+      label: Camera mode
+      options:
+        - Camera access enabled
+        - Mouse mode
+        - Not applicable
+    validations:
+      required: true
+
+  - type: textarea
+    id: console
+    attributes:
+      label: Console output or screenshot
+      description: Paste any browser console errors or attach a screenshot.
+      render: shell
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checklist
+      options:
+        - label: I searched existing issues for a duplicate.
+          required: true
+        - label: This report does not contain personal data, secrets, or recorded video.
+          required: true

@@ -1,4 +1,5 @@
 import asyncio
+import os
 import bleak
 import device_model
 
@@ -35,7 +36,7 @@ if __name__ == '__main__':
     # 选择要连接的设备 Select the device to connect to
     device_mac = None
     # user_input = input("Please enter the Mac address you want to connect to (e.g. DF:E9:1F:2C:BD:59)：")
-    user_input = 'FA:2B:11:E0:2B:FB'
+    user_input = os.environ.get('BLE_MAC', 'FA:2B:11:E0:2B:FB')
     for device in devices:
         if device.address == user_input:
             device_mac = device.address

@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SurgicalAir — Control the machine. Touch nothing.</title>
+  <meta name="description" content="SurgicalAir turns a webcam into a 21-point hand sensor. Explore a live touchless control lab, play a 3D precision game, learn the science, and see the business case. Runs on-device. MIT licensed.">
+  <meta name="theme-color" content="#05080f">
+  <meta name="color-scheme" content="dark">
+  <link rel="canonical" href="https://m0-ar.github.io/hand_fingers_tracking/preview.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="SurgicalAir — Control the machine. Touch nothing.">
+  <meta property="og:description" content="A webcam becomes a 21-point hand sensor. A browser becomes a touchless control layer. Try the live lab, the 3D game, and the zero-to-hero guide.">
+  <meta property="og:url" content="https://m0-ar.github.io/hand_fingers_tracking/preview.html">
+  <meta property="og:image" content="https://m0-ar.github.io/hand_fingers_tracking/assets/social-preview.png">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="640">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SurgicalAir — Control the machine. Touch nothing.">
+  <meta name="twitter:description" content="Try a browser-based touchless hand-tracking lab, a 3D precision game, and a full learning path. On-device. MIT.">
+  <meta name="twitter:image" content="https://m0-ar.github.io/hand_fingers_tracking/assets/social-preview.png">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "SurgicalAir",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Any (browser), Python 3.9+",
+    "description": "A touchless, browser-first hand-tracking research prototype that turns a webcam into a 21-point hand sensor for sterile and hands-busy environments.",
+    "license": "https://opensource.org/licenses/MIT",
+    "codeRepository": "https://github.com/M0-AR/hand_fingers_tracking",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+</head>
+<body>
+  <div class="scroll-progress" aria-hidden="true"><i id="scroll-progress"></i></div>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="ambient" aria-hidden="true">
+    <div class="ambient-grid"></div>
+    <div class="ambient-glow glow-a"></div>
+    <div class="ambient-glow glow-b"></div>
+    <div class="noise"></div>
+  </div>
+
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#top" aria-label="SurgicalAir home">
+        <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+          <path d="M10 30 V20 M16 30 V14 M22 30 V11 M28 30 V17 M10 30 H28" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+          <circle cx="10" cy="20" r="1.8" fill="#35e0d0"/><circle cx="16" cy="14" r="1.8" fill="#35e0d0"/><circle cx="22" cy="11" r="1.8" fill="#35e0d0"/><circle cx="28" cy="17" r="1.8" fill="#35e0d0"/>
+        </svg>
+        <span class="brand-text">SURGICAL<span>AIR</span></span>
+        <span class="brand-badge">RESEARCH</span>
+      </a>
+      <nav class="nav-links" id="nav-links" aria-label="Main navigation">
+        <a href="#why">Why</a>
+        <a href="#lab">Live lab</a>
+        <a href="#game">Game</a>
+        <a href="#learn">Learn</a>
+        <a href="#quiz">Quiz</a>
+        <a href="#business">Business</a>
+        <a href="#research">Research</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn btn-ghost btn-sm nav-github" href="https://github.com/M0-AR/hand_fingers_tracking" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
+        <a class="btn btn-primary btn-sm" href="#lab">Try it live</a>
+        <button class="menu-btn" id="menu-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-links">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero-veil" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <div class="eyebrow reveal"><span class="pulse-dot"></span> Research prototype · touchless human–computer interface</div>
+          <h1 class="reveal">Control the machine.<br><span class="grad-text">Touch nothing.</span></h1>
+          <p class="hero-sub reveal">SurgicalAir turns any webcam into a <strong>21-point hand sensor</strong>. Pinch, open, and rotate your hand to control software, 3D scenes, and prototype hardware — without breaking a sterile field.</p>
+          <div class="hero-cta reveal">
+            <a class="btn btn-primary btn-lg" href="#lab">Launch the live lab <span class="btn-arrow" aria-hidden="true">→</span></a>
+            <a class="btn btn-ghost btn-lg" href="#game">Play the 3D game</a>
+          </div>
+          <div class="hero-meta reveal">
+            <span><i class="dot ok"></i> 100% on-device</span>
+            <span><i class="dot ok"></i> No sign-up</span>
+            <span><i class="dot ok"></i> MIT licensed</span>
+          </div>
+        </div>
+        <div class="hero-orbit" aria-hidden="true">
+          <div class="orbit-card">
+            <div class="orbit-head"><span>LIVE SIGNAL</span><span class="orbit-live">●</span></div>
+            <div class="orbit-row"><span>PINCH</span><b id="hero-pinch">0.42</b></div>
+            <div class="orbit-bar"><i id="hero-pinch-bar"></i></div>
+            <div class="orbit-row"><span>OPENNESS</span><b id="hero-open">0.86</b></div>
+            <div class="orbit-bar"><i id="hero-open-bar"></i></div>
+            <div class="orbit-row"><span>ROTATION</span><b id="hero-rot">-18°</b></div>
+            <div class="orbit-bar"><i id="hero-rot-bar"></i></div>
+            <div class="orbit-foot">21 landmarks · 30 fps target</div>
+          </div>
+        </div>
+      </div>
+      <div class="container hero-stats">
+        <div class="stat reveal"><strong>21</strong><span>hand landmarks</span></div>
+        <div class="stat reveal"><strong>3</strong><span>core gestures</span></div>
+        <div class="stat reveal"><strong>0</strong><span>frames uploaded</span></div>
+        <div class="stat reveal"><strong>60s</strong><span>to your first interaction</span></div>
+      </div>
+      <a class="scroll-cue" href="#why" aria-label="Scroll to the problem section"><span></span></a>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>PINCH</span><span class="sep">/</span><span>OPENNESS</span><span class="sep">/</span><span>ROTATION</span><span class="sep">/</span><span>21 LANDMARKS</span><span class="sep">/</span><span>STERILE FIELD</span><span class="sep">/</span><span>ON-DEVICE</span><span class="sep">/</span><span>ONE EURO</span><span class="sep">/</span><span>HANDS-BUSY</span><span class="sep">/</span>
+        <span>PINCH</span><span class="sep">/</span><span>OPENNESS</span><span class="sep">/</span><span>ROTATION</span><span class="sep">/</span><span>21 LANDMARKS</span><span class="sep">/</span><span>STERILE FIELD</span><span class="sep">/</span><span>ON-DEVICE</span><span class="sep">/</span><span>ONE EURO</span><span class="sep">/</span><span>HANDS-BUSY</span><span class="sep">/</span>
+      </div>
+    </div>
+
+    <section class="section" id="why">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">01 — The problem</div>
+          <h2>Every touch is a risk.<br><span class="muted-text">Every unnecessary touch is a cost.</span></h2>
+          <p class="lede">In a sterile environment, the mouse is the weak link. A surgeon scrubbed and gloved cannot touch a keyboard without breaking protocol. A radiologist mid-procedure cannot scroll a scan without a free hand. A trainee cannot rewind a video without looking away.</p>
+        </div>
+        <div class="cards-3">
+          <article class="card reveal">
+            <div class="card-num">01</div>
+            <div class="card-icon" aria-hidden="true">◈</div>
+            <h3>The sterile field problem</h3>
+            <p>Touchscreens, mice, and keyboards are contamination surfaces. Every contact creates a decision: change gloves, delegate, or risk it. None of those options is free.</p>
+            <div class="card-foot">Zero-contact interaction</div>
+          </article>
+          <article class="card reveal">
+            <div class="card-num">02</div>
+            <div class="card-icon" aria-hidden="true">◎</div>
+            <h3>The cognitive load problem</h3>
+            <p>A surgeon should be thinking about anatomy, not about which button to press. Natural gestures — pinch, open, rotate — reuse motor skills people already have.</p>
+            <div class="card-foot">Eyes-up, hands-free control</div>
+          </article>
+          <article class="card reveal">
+            <div class="card-num">03</div>
+            <div class="card-icon" aria-hidden="true">◇</div>
+            <h3>The access problem</h3>
+            <p>Cleanrooms, industrial kitchens, labs, and accessibility contexts all share one constraint: the user cannot or should not touch the computer. The interface should adapt to the human.</p>
+            <div class="card-foot">One camera. Many contexts.</div>
+          </article>
+        </div>
+        <div class="problem-bar reveal">
+          <span class="problem-bar-kicker">THE INSIGHT</span>
+          <p>A webcam is already there. A hand is already yours. SurgicalAir closes the gap in software — no new hardware, no new training, no new surface to sterilise.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="lab">
+      <div class="container">
+        <div class="section-head split reveal">
+          <div>
+            <div class="eyebrow">02 — Live lab</div>
+            <h2>Move your hand.<br><span class="grad-text">Watch the machine listen.</span></h2>
+            <p class="lede">Start the camera and the page reads 21 points on your hand in real time. Pinch scales the core, openness expands the particles, and rotation turns the object. No camera? Mouse mode gives you the same signals.</p>
+          </div>
+          <div class="lab-status" id="lab-status">
+            <span class="status-light idle" id="status-light"></span>
+            <span id="status-text">Ready when you are</span>
+          </div>
+        </div>
+
+        <div class="lab-grid reveal">
+          <div class="lab-viewport">
+            <canvas id="lab-canvas"></canvas>
+            <div class="lab-hud">
+              <div class="hud-top">
+                <span class="pill" id="lab-mode-pill">IDLE</span>
+                <span class="hud-fps" id="lab-fps">-- fps</span>
+              </div>
+              <div class="lab-hint" id="hand-hint">Tip: mouse mode works without a camera.</div>
+              <div class="signal-stack">
+                <div class="signal">
+                  <div class="signal-label"><span>Pinch</span><b id="val-pinch">0%</b></div>
+                  <div class="signal-bar"><i id="bar-pinch"></i></div>
+                </div>
+                <div class="signal">
+                  <div class="signal-label"><span>Openness</span><b id="val-open">0%</b></div>
+                  <div class="signal-bar"><i id="bar-open"></i></div>
+                </div>
+                <div class="signal">
+                  <div class="signal-label"><span>Rotation</span><b id="val-rot">0°</b></div>
+                  <div class="signal-bar"><i id="bar-rot"></i></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="lab-panel">
+            <h3>Control panel</h3>
+            <div class="btn-row">
+              <button class="btn btn-primary" id="btn-camera" type="button">Start camera</button>
+              <button class="btn btn-ghost" id="btn-mouse" type="button">Mouse mode</button>
+            </div>
+            <p class="micro" id="camera-note">Video is processed in this tab and never uploaded. Camera needs HTTPS or localhost.</p>
+
+            <div class="field-label">Choose a scene</div>
+            <div class="scene-tabs" role="tablist" aria-label="3D scene">
+              <button class="scene-tab active" type="button" role="tab" aria-selected="true" data-scene="holo">Holo core</button>
+              <button class="scene-tab" type="button" role="tab" aria-selected="false" data-scene="neural">Neural web</button>
+              <button class="scene-tab" type="button" role="tab" aria-selected="false" data-scene="field">Sterile field</button>
+            </div>
+
+            <div class="field-label">What your hand controls</div>
+            <ul class="control-list">
+              <li data-signal="pinch"><span class="control-dot"></span><div><b>Pinch</b><small>Scales the core and tightens the glow.</small></div></li>
+              <li data-signal="open"><span class="control-dot"></span><div><b>Openness</b><small>Expands the particle field around you.</small></div></li>
+              <li data-signal="rot"><span class="control-dot"></span><div><b>Rotation</b><small>Turns the object with your wrist angle.</small></div></li>
+            </ul>
+
+            <div class="privacy-chip">
+              <span aria-hidden="true">▣</span>
+              <div><b>Privacy by architecture</b><small>No video leaves your device. No account. No analytics.</small></div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="game">
+      <div class="container">
+        <div class="section-head split reveal">
+          <div>
+            <div class="eyebrow">03 — Precision game</div>
+            <h2>Steer with your hand.<br><span class="grad-text">Learn with your brain.</span></h2>
+            <p class="lede">Sterile Flight is a 60-second 3D ring runner. Move to steer the probe, pinch to slow time, and pass through rings. Every ring lights a new node in the Neural Link — a live map of the concepts you are learning. Turn on the Narrator and it speaks each idea aloud.</p>
+          </div>
+          <div class="game-facts">
+            <div><strong>60s</strong><span>per run</span></div>
+            <div><strong>12</strong><span>concepts</span></div>
+            <div><strong>3</strong><span>lives</span></div>
+          </div>
+        </div>
+
+        <div class="game-shell reveal">
+          <div class="game-stage" id="game-stage">
+            <canvas id="game-canvas" aria-label="3D precision game. Move the mouse or your hand to steer, pinch or press Space to focus."></canvas>
+            <div class="game-hud" aria-hidden="true">
+              <div class="hud-cell"><span>SCORE</span><strong id="game-score">0</strong></div>
+              <div class="hud-cell"><span>COMBO</span><strong id="game-combo">x1</strong></div>
+              <div class="hud-cell"><span>RINGS</span><strong id="game-rings">0</strong></div>
+              <div class="hud-cell"><span>TIME</span><strong id="game-time">60</strong></div>
+              <div class="hud-cell"><span>FOCUS</span><strong id="game-focus">READY</strong></div>
+            </div>
+
+            <div class="game-overlay" id="game-overlay">
+              <div class="overlay-card">
+                <span class="overlay-kicker">3D PRECISION TRAINER</span>
+                <h3>Sterile Flight</h3>
+                <p>Move to steer. Pinch — or hold <kbd>Space</kbd> — to focus time. Pass through the centre of each ring to score and unlock a concept.</p>
+                <div class="overlay-actions">
+                  <button class="btn btn-primary btn-lg" id="game-start" type="button">Start run <span aria-hidden="true">→</span></button>
+                  <button class="btn btn-ghost btn-lg" id="game-hand" type="button">Use hand control</button>
+                </div>
+                <p class="overlay-hint" id="game-hand-note">Mouse and keyboard work immediately. Hand control uses the same camera as the Live Lab.</p>
+              </div>
+            </div>
+
+            <div class="game-end" id="game-end" hidden>
+              <div class="end-card">
+                <span class="overlay-kicker">RUN COMPLETE</span>
+                <h3 id="end-title">Good run.</h3>
+                <div class="end-grid">
+                  <div><span>Score</span><strong id="end-score">0</strong></div>
+                  <div><span>Best</span><strong id="end-best">0</strong></div>
+                  <div><span>Rings</span><strong id="end-rings">0</strong></div>
+                  <div><span>Concepts</span><strong id="end-concepts">0</strong></div>
+                </div>
+                <p class="end-note" id="end-note">Every ring is a concept. Every concept is a node.</p>
+                <div class="overlay-actions">
+                  <button class="btn btn-primary" id="game-replay" type="button">Run again</button>
+                  <a class="btn btn-ghost" href="#quiz">Test your knowledge</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="concept-pop" id="concept-pop" role="status" aria-live="polite"></div>
+          </div>
+
+          <aside class="neural-panel">
+            <div class="neural-head">
+              <span>NEURAL LINK</span>
+              <span id="neural-count">0 / 12</span>
+            </div>
+            <canvas id="neural-canvas" aria-label="A growing network of the concepts you have unlocked"></canvas>
+            <div class="neural-log" id="neural-log">
+              <p class="log-empty">Pass rings to grow the network. Each ring teaches one idea.</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="narrator">
+              <span class="switch-track"><span class="switch-thumb"></span></span>
+              <span class="switch-copy"><b>Narrator</b><small>Speaks each unlocked concept aloud</small></span>
+            </label>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="learn">
+      <div class="container">
+        <div class="section-head split reveal">
+          <div>
+            <div class="eyebrow">04 — Zero to hero</div>
+            <h2>Five levels.<br><span class="grad-text">No PhD required.</span></h2>
+            <p class="lede">Each level is a short, plain-language step with one idea, one example, and one thing you can do. Work through them in order and you will understand more than most interview candidates.</p>
+          </div>
+          <div class="progress-card">
+            <span>YOUR PROGRESS</span>
+            <strong id="learn-progress-label">0%</strong>
+            <div class="progress-bar"><i id="learn-progress"></i></div>
+            <small>Saved on this device</small>
+          </div>
+        </div>
+
+        <div class="levels">
+          <details class="level" data-level="1">
+            <summary>
+              <span class="level-num">01</span>
+              <span class="level-title"><b>See the dots</b><small>What a landmark actually is</small></span>
+              <span class="level-chev" aria-hidden="true">+</span>
+            </summary>
+            <div class="level-body">
+              <div class="level-grid">
+                <div>
+                  <p class="level-lead">A landmark is a named point on your hand. The model returns 21 of them — one wrist, five knuckles, and fifteen finger joints. Think of a connect-the-dots drawing that updates thirty times a second.</p>
+                  <ul class="check-list">
+                    <li><b>0</b> is the wrist, the anchor.</li>
+                    <li><b>4, 8, 12, 16, 20</b> are the five fingertips.</li>
+                    <li><b>9</b> is the middle knuckle — a stable centre of the hand.</li>
+                  </ul>
+                  <p class="level-note">The coordinates are normalized to the image: x and y usually run from 0 to 1. z is relative depth, not centimetres.</p>
+                </div>
+                <img src="assets/hand-landmarks.svg" alt="Numbered map of the 21 hand landmarks" width="320" height="430" loading="lazy">
+              </div>
+              <label class="complete-row"><input type="checkbox" class="level-check" data-level="1"> <span>I can name the wrist, the five fingertips, and landmark 9.</span></label>
+            </div>
+          </details>
+
+          <details class="level" data-level="2">
+            <summary>
+              <span class="level-num">02</span>
+              <span class="level-title"><b>Measure the gap</b><small>How a gesture becomes a number</small></span>
+              <span class="level-chev" aria-hidden="true">+</span>
+            </summary>
+            <div class="level-body">
+              <p class="level-lead">A gesture is just geometry. The distance between two points is the square root of the squared differences. Divide by the size of the hand and the number works whether your hand is near the lens or across the room.</p>
+              <div class="code-block">
+                <div class="code-head"><span>python</span><button class="copy-btn" type="button">Copy</button></div>
+                <pre><code>import math
+
+def distance(a, b):
+    return math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2)
+
+def pinch_ratio(hand):
+    gap = distance(hand.landmark[4], hand.landmark[8])
+    size = distance(hand.landmark[0], hand.landmark[9])
+    return gap / max(size, 1e-6)</code></pre>
+              </div>
+              <p class="level-note">Small ratio means a closed pinch. Large ratio means an open hand. The hand-size division is the trick that makes it robust.</p>
+              <label class="complete-row"><input type="checkbox" class="level-check" data-level="2"> <span>I can explain why we divide by hand size.</span></label>
+            </div>
+          </details>
+
+          <details class="level" data-level="3">
+            <summary>
+              <span class="level-num">03</span>
+              <span class="level-title"><b>Make it feel human</b><small>Thresholds, smoothing, and hysteresis</small></span>
+              <span class="level-chev" aria-hidden="true">+</span>
+            </summary>
+            <div class="level-body">
+              <p class="level-lead">Raw landmarks jitter. A naive threshold flickers. The fix is two numbers instead of one: a lower threshold to start a pinch and a higher threshold to release it. That gap is called hysteresis.</p>
+              <div class="code-block">
+                <div class="code-head"><span>javascript</span><button class="copy-btn" type="button">Copy</button></div>
+                <pre><code>let pinching = false;
+
+function updatePinch(ratio) {
+  if (!pinching &amp;&amp; ratio &lt; 0.30) pinching = true;
+  else if (pinching &amp;&amp; ratio &gt; 0.45) pinching = false;
+  return pinching;
+}
+
+// Exponential smoothing: stable when still, responsive when fast.
+const smooth = (prev, next, alpha = 0.72) =&gt;
+  prev + (next - prev) * (1 - alpha);</code></pre>
+              </div>
+              <p class="level-note">Hysteresis stops the “maybe” zone from exciting the whole interface. Smoothing stops the cursor from looking drunk.</p>
+              <label class="complete-row"><input type="checkbox" class="level-check" data-level="3"> <span>I can explain hysteresis in one sentence.</span></label>
+            </div>
+          </details>
+
+          <details class="level" data-level="4">
+            <summary>
+              <span class="level-num">04</span>
+              <span class="level-title"><b>Build the loop</b><small>Camera → landmarks → signals → action</small></span>
+              <span class="level-chev" aria-hidden="true">+</span>
+            </summary>
+            <div class="level-body">
+              <p class="level-lead">Every hand-tracking app is the same loop. Read a frame. Detect the hand. Convert landmarks into signals. Decide what the signals mean. Do the action. Repeat.</p>
+              <div class="code-block">
+                <div class="code-head"><span>python</span><button class="copy-btn" type="button">Copy</button></div>
+                <pre><code>import cv2
+import mediapipe as mp
+
+mp_hands = mp.solutions.hands
+cap = cv2.VideoCapture(0)
+
+with mp_hands.Hands(min_detection_confidence=0.8,
+                    min_tracking_confidence=0.5) as hands:
+    while cap.isOpened():
+        ok, frame = cap.read()
+        if not ok:
+            continue
+        rgb = cv2.cvtColor(cv2.flip(frame, 1), cv2.COLOR_BGR2RGB)
+        result = hands.process(rgb)
+
+        if result.multi_hand_landmarks:
+            hand = result.multi_hand_landmarks[0]
+            # pinch_ratio(hand) → threshold → action
+            print(pinch_ratio(hand))
+
+        cv2.imshow("SurgicalAir", frame)
+        if cv2.waitKey(5) &amp; 0xFF == ord("q"):
+            break
+
+cap.release()
+cv2.destroyAllWindows()</code></pre>
+              </div>
+              <p class="level-note">This is the same shape as the scripts in the repository. The browser version swaps OpenCV for a WebAssembly model.</p>
+              <label class="complete-row"><input type="checkbox" class="level-check" data-level="4"> <span>I can describe the five steps of the loop without notes.</span></label>
+            </div>
+          </details>
+
+          <details class="level" data-level="5">
+            <summary>
+              <span class="level-num">05</span>
+              <span class="level-title"><b>Ship it safely</b><small>Performance, privacy, fallbacks, and honesty</small></span>
+              <span class="level-chev" aria-hidden="true">+</span>
+            </summary>
+            <div class="level-body">
+              <p class="level-lead">A demo that only works on your laptop is not a product. Production means a fallback for every failure, a privacy story you can defend, and claims you can prove.</p>
+              <ul class="check-list">
+                <li><b>Fallback:</b> mouse, keyboard, or touch always available.</li>
+                <li><b>Privacy:</b> process frames on-device; never upload video by default.</li>
+                <li><b>Performance:</b> cap pixel ratio, lazy-load the model, pause when hidden.</li>
+                <li><b>Safety:</b> if a wrong gesture could hurt someone, require confirmation and a human override.</li>
+                <li><b>Honesty:</b> call it a prototype until a study says otherwise.</li>
+              </ul>
+              <div class="level-callout">The most impressive sentence in a technical interview is not “it works.” It is “here is what it does not do yet, and here is how I would find out.”</div>
+              <label class="complete-row"><input type="checkbox" class="level-check" data-level="5"> <span>I know what I would test before calling this production-ready.</span></label>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="quiz">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">05 — The quiz</div>
+          <h2>Ten questions.<br><span class="grad-text">One honest score.</span></h2>
+          <p class="lede">No trick questions. Every answer teaches something. Score 8 or higher and you are thinking like someone who could build this — not just use it.</p>
+        </div>
+
+        <div class="quiz-card reveal" id="quiz-card">
+          <div class="quiz-top">
+            <span id="quiz-count">Question 1 of 10</span>
+            <span id="quiz-score">Score 0</span>
+          </div>
+          <div class="progress-bar"><i id="quiz-progress"></i></div>
+          <h3 id="quiz-question">Loading question…</h3>
+          <div class="quiz-options" id="quiz-options"></div>
+          <div class="quiz-feedback" id="quiz-feedback" hidden></div>
+          <div class="quiz-actions">
+            <button class="btn btn-primary" id="quiz-next" type="button" hidden>Next question</button>
+            <button class="btn btn-ghost" id="quiz-restart" type="button" hidden>Try again</button>
+          </div>
+        </div>
+
+        <div class="quiz-result" id="quiz-result" hidden>
+          <div class="result-ring"><span id="result-score">0</span><small>/ 10</small></div>
+          <h3 id="result-badge">Explorer</h3>
+          <p id="result-text"></p>
+          <div class="overlay-actions">
+            <button class="btn btn-primary" id="result-restart" type="button">Take it again</button>
+            <a class="btn btn-ghost" href="#learn">Review the five levels</a>
+          </div>
+          <p class="micro">Best score is saved on this device.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="business">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">06 — Business value</div>
+          <h2>Touchless is not a gimmick.<br><span class="grad-text">It is throughput.</span></h2>
+          <p class="lede">The value is not “we have hand tracking.” The value is minutes saved per procedure, fewer glove changes, faster training, and a workflow that does not stop when a hand is busy.</p>
+        </div>
+
+        <div class="value-grid">
+          <article class="value-card reveal"><span class="value-icon">◈</span><h3>Sterile throughput</h3><p>Fewer breaks to touch a mouse. Fewer glove changes. Fewer “can someone click this for me?” moments.</p><small>Target buyer: OR leadership, infection prevention</small></article>
+          <article class="value-card reveal"><span class="value-icon">◎</span><h3>Training velocity</h3><p>Trainees control anatomy models, videos, and simulations with their hands while keeping their eyes on the task.</p><small>Target buyer: simulation centres, medical schools</small></article>
+          <article class="value-card reveal"><span class="value-icon">◇</span><h3>Tele-mentoring</h3><p>An expert’s hand can be captured and replayed as a 21-point overlay — a lightweight, low-bandwidth teaching signal.</p><small>Target buyer: telemedicine, rural health networks</small></article>
+          <article class="value-card reveal"><span class="value-icon">△</span><h3>Hands-busy work</h3><p>Cleanrooms, labs, kitchens, and accessibility contexts all need control without contact.</p><small>Target buyer: industrial operations, accessibility teams</small></article>
+        </div>
+
+        <div class="roi reveal">
+          <div class="roi-copy">
+            <div class="eyebrow">Illustrative model</div>
+            <h3>Move the sliders.<br>See the size of the prize.</h3>
+            <p>This is a simple time-value model, not a forecast. Use it to start a conversation with your team — then replace the assumptions with pilot data.</p>
+            <div class="roi-formula">annual value ≈ procedures/day × minutes saved × cost/minute × operating days</div>
+          </div>
+          <div class="roi-panel">
+            <label class="roi-field">
+              <span>Procedures per day <b id="roi-procs-out">60</b></span>
+              <input type="range" id="roi-procs" min="10" max="200" step="5" value="60">
+            </label>
+            <label class="roi-field">
+              <span>Minutes saved per procedure <b id="roi-mins-out">4</b></span>
+              <input type="range" id="roi-mins" min="0" max="20" step="0.5" value="4">
+            </label>
+            <label class="roi-field">
+              <span>Cost per operating minute <b id="roi-cost-out">$40</b></span>
+              <input type="range" id="roi-cost" min="10" max="100" step="5" value="40">
+            </label>
+            <label class="roi-field">
+              <span>Operating days per year <b id="roi-days-out">250</b></span>
+              <input type="range" id="roi-days" min="200" max="365" step="5" value="250">
+            </label>
+            <div class="roi-result">
+              <span>Illustrative annual value</span>
+              <strong id="roi-value">$0</strong>
+              <small id="roi-hours">0 hours of capacity returned</small>
+            </div>
+            <p class="micro">Not a financial promise. Not clinical evidence. Your results depend on workflow, adoption, and validation.</p>
+          </div>
+        </div>
+
+        <div class="buyer-grid reveal">
+          <div class="buyer-card"><span>WHO BUYS</span><b>Hospital innovation teams, simulation centres, device makers, accessibility programs.</b></div>
+          <div class="buyer-card"><span>WHY NOW</span><b>Cameras are ubiquitous, on-device ML is fast enough, and touchless workflows are already studied in the OR.</b></div>
+          <div class="buyer-card"><span>WHAT PROOF THEY NEED</span><b>A measured pilot: time saved, error rate, user preference, and a clear regulatory pathway.</b></div>
+        </div>
+
+        <div class="pilot reveal">
+          <div class="pilot-head"><div class="eyebrow">A sane path to a pilot</div><h3>Three steps, no theatre.</h3></div>
+          <div class="pilot-steps">
+            <div class="pilot-step"><span>01</span><b>Two-week technical evaluation</b><p>Run the browser lab and Python demos on your own hardware. Confirm latency, camera fit, and workflow assumptions.</p></div>
+            <div class="pilot-step"><span>02</span><b>Four-to-six-week workflow study</b><p>Pick one narrow task. Measure time, errors, and user preference against the current process. Publish the result, positive or negative.</p></div>
+            <div class="pilot-step"><span>03</span><b>Decide with evidence</b><p>If the numbers hold, scope an integration. If they do not, you saved a year and a budget cycle.</p></div>
+          </div>
+        </div>
+
+        <div class="derisk reveal">
+          <h3>What is de-risked — and what is not</h3>
+          <div class="derisk-grid">
+            <div class="derisk-col good">
+              <span class="derisk-label">DE-RISKED TODAY</span>
+              <ul>
+                <li>21-landmark tracking runs in a browser</li>
+                <li>Pinch, openness, and rotation are usable signals</li>
+                <li>Video stays on-device</li>
+                <li>The prototype is MIT licensed and reproducible</li>
+                <li>The 3D demo proves the interaction feel</li>
+              </ul>
+            </div>
+            <div class="derisk-col bad">
+              <span class="derisk-label">STILL TO PROVE</span>
+              <ul>
+                <li>Clinical accuracy under real OR lighting and gloves</li>
+                <li>Sterility workflow fit and long-session ergonomics</li>
+                <li>Regulatory classification and quality management</li>
+                <li>Multi-user, occlusion, and failure-mode behaviour</li>
+                <li>Any outcome claim — none is made here</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="architecture">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">07 — Architecture</div>
+          <h2>One pipeline.<br><span class="grad-text">Interchangeable ends.</span></h2>
+          <p class="lede">The perception layer does not care what the hand is controlling. That is why the same core can drive an image viewer, a game, or a prototype device. Click a layer to see what it does.</p>
+        </div>
+        <div class="arch-grid reveal">
+          <div class="arch-stack" role="tablist" aria-label="Architecture layers">
+            <button class="arch-layer active" type="button" role="tab" aria-selected="true" data-layer="0">
+              <span class="arch-num">01</span><span><b>Input</b><small>Camera, BLE IMU, fallback</small></span><span class="arch-arrow">→</span>
+            </button>
+            <button class="arch-layer" type="button" role="tab" aria-selected="false" data-layer="1">
+              <span class="arch-num">02</span><span><b>Perception</b><small>21 landmarks, handedness</small></span><span class="arch-arrow">→</span>
+            </button>
+            <button class="arch-layer" type="button" role="tab" aria-selected="false" data-layer="2">
+              <span class="arch-num">03</span><span><b>Signal engine</b><small>Pinch, openness, rotation</small></span><span class="arch-arrow">→</span>
+            </button>
+            <button class="arch-layer" type="button" role="tab" aria-selected="false" data-layer="3">
+              <span class="arch-num">04</span><span><b>Adapters</b><small>Mouse, WebSocket, BLE</small></span><span class="arch-arrow">→</span>
+            </button>
+            <button class="arch-layer" type="button" role="tab" aria-selected="false" data-layer="4">
+              <span class="arch-num">05</span><span><b>Applications</b><small>Imaging, training, access</small></span><span class="arch-arrow">→</span>
+            </button>
+          </div>
+          <div class="arch-detail" id="arch-detail">
+            <span class="arch-detail-kicker" id="arch-kicker">LAYER 01</span>
+            <h3 id="arch-title">Input</h3>
+            <p id="arch-body">The system starts with what you already have: a standard RGB webcam. The optional BLE path reads an IMU sensor for prototyping. Mouse and keyboard are always available as a fallback, so a failed camera never blocks the user.</p>
+            <ul class="check-list" id="arch-points">
+              <li>Webcam at 30 fps, processed locally.</li>
+              <li>BLE IMU packets parsed as a legacy bridge.</li>
+              <li>Mouse and keyboard never removed.</li>
+            </ul>
+            <div class="arch-files"><span>FILES</span><code>main.py · device_model.py</code></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="research">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">08 — Research & evidence</div>
+          <h2>Borrowed science.<br><span class="grad-text">Honest claims.</span></h2>
+          <p class="lede">This project stands on published work in hand tracking, signal smoothing, and touchless operating-room interaction. It does not claim clinical validation of its own.</p>
+        </div>
+        <div class="research-grid">
+          <a class="research-card reveal" href="https://arxiv.org/abs/2006.10214" target="_blank" rel="noopener">
+            <span class="research-tag">PERCEPTION</span>
+            <h3>MediaPipe Hands</h3>
+            <p>Real-time hand tracking from a single RGB frame, producing 21 landmarks. The foundation of the browser and Python demos.</p>
+            <span class="research-link">Zhang et al., 2020 <span aria-hidden="true">↗</span></span>
+          </a>
+          <a class="research-card reveal" href="https://gery.casiez.net/1euro/" target="_blank" rel="noopener">
+            <span class="research-tag">SIGNAL QUALITY</span>
+            <h3>The One Euro Filter</h3>
+            <p>An adaptive low-pass filter: stable when the hand is still, responsive when it moves fast. The canonical fix for jitter.</p>
+            <span class="research-link">Casiez et al., CHI 2012 <span aria-hidden="true">↗</span></span>
+          </a>
+          <a class="research-card reveal" href="https://www.ahrq.gov/sites/default/files/2024-02/wachs1-report.pdf" target="_blank" rel="noopener">
+            <span class="research-tag">OPERATING ROOM</span>
+            <h3>GestureClean</h3>
+            <p>AHRQ-funded work on a touchless interaction language for the OR, motivated by asepsis and contamination risk.</p>
+            <span class="research-link">Wachs et al., AHRQ report <span aria-hidden="true">↗</span></span>
+          </a>
+          <a class="research-card reveal" href="https://www.tandfonline.com/doi/full/10.1080/10447318.2022.2041896" target="_blank" rel="noopener">
+            <span class="research-tag">USER STUDIES</span>
+            <h3>Touchless OR interfaces</h3>
+            <p>A study of gesture preferences for touchless interaction in the operating room, focused on efficiency and asepsis.</p>
+            <span class="research-link">International Journal of HCI, 2022 <span aria-hidden="true">↗</span></span>
+          </a>
+        </div>
+
+        <div class="evidence-table-wrap reveal">
+          <table class="evidence-table">
+            <thead><tr><th>Claim</th><th>Status</th><th>Basis</th></tr></thead>
+            <tbody>
+              <tr><td>21 landmarks can be inferred from RGB</td><td><span class="pill ok">Externally validated</span></td><td>MediaPipe Hands, 2020</td></tr>
+              <tr><td>Touchless interaction is useful in the OR</td><td><span class="pill ok">Studied</span></td><td>GestureClean; IJHCI 2022</td></tr>
+              <tr><td>Adaptive smoothing improves pointer feel</td><td><span class="pill ok">Published method</span></td><td>One Euro Filter, CHI 2012</td></tr>
+              <tr><td>This repository improves surgical outcomes</td><td><span class="pill no">Not proven</span></td><td>No clinical study of this code</td></tr>
+              <tr><td>Sub-millimetre precision</td><td><span class="pill no">Not claimed</span></td><td>RGB depth is estimated</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="safety reveal">
+          <div class="safety-icon" aria-hidden="true">!</div>
+          <div>
+            <h3>Safety notice</h3>
+            <p>SurgicalAir is a research prototype. It is not a medical device, has not been cleared or certified by any regulator, and must not be used for diagnosis, treatment, or any clinical decision. Any clinical or commercial deployment requires formal risk management, usability engineering, cybersecurity review, privacy compliance, and validation against the intended use. Do not use this code to control a device that can harm a person.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="roadmap">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">09 — Roadmap</div>
+          <h2>What is next.<br><span class="muted-text">What is deliberately not.</span></h2>
+        </div>
+        <div class="roadmap">
+          <div class="roadmap-col reveal">
+            <div class="roadmap-head"><span class="pill live">NOW</span><h3>Prototype</h3></div>
+            <ul>
+              <li>Browser live lab with mouse fallback</li>
+              <li>3D precision game with neural link</li>
+              <li>Five-level curriculum and quiz</li>
+              <li>Python demos and BLE bridge</li>
+              <li>MIT licensed, reproducible</li>
+            </ul>
+          </div>
+          <div class="roadmap-col reveal">
+            <div class="roadmap-head"><span class="pill next">NEXT</span><h3>Pilot-ready</h3></div>
+            <ul>
+              <li>One Euro filter in the browser path</li>
+              <li>Dwell-click and confirmation gestures</li>
+              <li>Recording and replay of 21-point overlays</li>
+              <li>Latency and error telemetry (local only)</li>
+              <li>Documented integration adapter</li>
+            </ul>
+          </div>
+          <div class="roadmap-col reveal">
+            <div class="roadmap-head"><span class="pill later">LATER</span><h3>Validated</h3></div>
+            <ul>
+              <li>Workflow study with a clinical partner</li>
+              <li>Usability and risk-management dossier</li>
+              <li>Multi-hand and occlusion handling</li>
+              <li>Depth-camera and IMU fusion</li>
+              <li>Regulatory strategy by target market</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="faq">
+      <div class="container faq-wrap">
+        <div class="section-head reveal">
+          <div class="eyebrow">10 — Questions</div>
+          <h2>Ask the awkward ones.</h2>
+          <p class="lede">The answers are short on purpose. If something is still unclear, open an issue — the question is probably shared by someone else.</p>
+        </div>
+        <div class="faq-list">
+          <details class="faq reveal"><summary>Is this a medical device?<span>+</span></summary><p>No. It is a research prototype. It has not been cleared or certified by the FDA, CE, or any other regulator, and it must not be used for diagnosis or treatment. The repository is a starting point for research and engineering, not a clinical product.</p></details>
+          <details class="faq reveal"><summary>Does my camera video leave my device?<span>+</span></summary><p>No. The browser lab processes frames inside the tab using an on-device model. Video is not recorded, uploaded, or sent to a server. The page has no analytics and no account system. The model files are downloaded from a public CDN, but your video stays local.</p></details>
+          <details class="faq reveal"><summary>Do I need a GPU?<span>+</span></summary><p>No, but it helps. The browser tracker prefers the GPU and falls back to the CPU. On older machines, expect lower frame rates. A modern laptop with an integrated GPU is enough for the demo.</p></details>
+          <details class="faq reveal"><summary>Can I try it without a camera?<span>+</span></summary><p>Yes. Mouse mode in the Live Lab and the entire Precision Game work without a camera. The 3D scenes, quiz, curriculum, and ROI calculator do not need any hardware.</p></details>
+          <details class="faq reveal"><summary>How accurate is it?<span>+</span></summary><p>Accurate enough for interaction prototyping, not for measurement. The landmarks are normalized to the image and the z value is relative depth, not calibrated distance. Gloves, low light, occlusion, and extreme angles all degrade tracking. Validate on your own hardware and workflow.</p></details>
+          <details class="faq reveal"><summary>What is the BLE code for?<span>+</span></summary><p>It is a legacy bridge for a small IMU sensor that streams acceleration, gyroscope, and angle data. It is useful for prototyping sensor fusion. It is not required for the webcam experience and it is not a medical-grade communication layer.</p></details>
+          <details class="faq reveal"><summary>Can I use it commercially?<span>+</span></summary><p>The code is MIT licensed, so you can use, modify, and redistribute it with attribution. Commercial deployment still requires your own validation, regulatory work, and safety analysis. Pilot support and integration work can be discussed through a GitHub issue.</p></details>
+          <details class="faq reveal"><summary>How do I contribute?<span>+</span></summary><p>Open an issue with a clear reproduction, or send a small pull request with one change and one verification step. Good first issues are labelled in the repository. Documentation fixes are welcome and count.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta-section" id="start">
+      <div class="container">
+        <div class="cta-panel reveal">
+          <div class="cta-glow" aria-hidden="true"></div>
+          <div class="cta-copy">
+            <div class="eyebrow">The next interface is not a screen</div>
+            <h2>It is a gesture.<br><span class="grad-text">Try it before you decide.</span></h2>
+            <p>Sixty seconds in the Live Lab will tell you more than a deck. Then read the evidence, play the game, and tell us what would make it useful in your world.</p>
+            <div class="hero-cta">
+              <a class="btn btn-primary btn-lg" href="#lab">Open the Live Lab <span aria-hidden="true">→</span></a>
+              <a class="btn btn-ghost btn-lg" href="https://github.com/M0-AR/hand_fingers_tracking" target="_blank" rel="noopener">Star on GitHub</a>
+            </div>
+            <p class="micro">Pilots, research collaborations, and integration questions: open an issue on GitHub. We answer in public.</p>
+          </div>
+          <div class="cta-aside">
+            <div class="cta-card"><span>FOR BUILDERS</span><b>Clone it, run it, break it.</b><small>Python demos, browser lab, documented thresholds.</small></div>
+            <div class="cta-card"><span>FOR RESEARCHERS</span><b>Cite it, test it, challenge it.</b><small>Clear claims, known limitations, open license.</small></div>
+            <div class="cta-card"><span>FOR BUYERS</span><b>Pilot it with evidence.</b><small>Small scope, measured outcome, honest go/no-go.</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="#top" aria-label="Back to top">
+          <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+            <path d="M10 30 V20 M16 30 V14 M22 30 V11 M28 30 V17 M10 30 H28" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
+          <span class="brand-text">SURGICAL<span>AIR</span></span>
+        </a>
+        <p>Touchless precision, built on open web standards. A research prototype by M0-AR and contributors.</p>
+        <p class="footer-fine">Not a medical device. Not clinically validated. Do not use for diagnosis or treatment.</p>
+      </div>
+      <div class="footer-col">
+        <span>EXPLORE</span>
+        <a href="#lab">Live lab</a>
+        <a href="#game">Precision game</a>
+        <a href="#learn">Five levels</a>
+        <a href="#quiz">Quiz</a>
+      </div>
+      <div class="footer-col">
+        <span>PROJECT</span>
+        <a href="https://github.com/M0-AR/hand_fingers_tracking" target="_blank" rel="noopener">GitHub repository</a>
+        <a href="https://github.com/M0-AR/hand_fingers_tracking#-beginner-guide--read-this-and-you-are-a-professional" target="_blank" rel="noopener">Beginner guide</a>
+        <a href="https://github.com/M0-AR/hand_fingers_tracking/blob/main/LICENSE" target="_blank" rel="noopener">MIT license</a>
+        <a href="https://github.com/M0-AR/hand_fingers_tracking/issues" target="_blank" rel="noopener">Issues & pilots</a>
+      </div>
+      <div class="footer-col">
+        <span>EVIDENCE</span>
+        <a href="https://arxiv.org/abs/2006.10214" target="_blank" rel="noopener">MediaPipe Hands</a>
+        <a href="https://gery.casiez.net/1euro/" target="_blank" rel="noopener">One Euro Filter</a>
+        <a href="https://www.ahrq.gov/sites/default/files/2024-02/wachs1-report.pdf" target="_blank" rel="noopener">GestureClean</a>
+        <a href="https://www.tandfonline.com/doi/full/10.1080/10447318.2022.2041896" target="_blank" rel="noopener">Touchless OR study</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© <span id="year">2026</span> SurgicalAir · MIT licensed</span>
+      <span>Built for GitHub Pages · No trackers · No cookies</span>
+      <a href="#top" class="to-top" id="to-top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <noscript>
+    <div class="noscript">This experience uses JavaScript for the 3D lab, game, and quiz. The README has the full written guide.</div>
+  </noscript>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
+      }
+    }
+  </script>
+  <script src="assets/core.js" defer></script>
+  <script type="module" src="assets/scene.js"></script>
+</body>
+</html>

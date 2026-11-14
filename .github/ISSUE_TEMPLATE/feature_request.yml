@@ -1,0 +1,60 @@
+name: Feature request
+description: Suggest an improvement to the prototype, documentation, or accessibility.
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please keep proposals within the project's scope: touchless interaction,
+        honest research, clear documentation, and a safe fallback. Clinical or
+        "medical-grade" claims require evidence and are not accepted as features.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: Describe the user and the situation, not only the solution.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+    validations:
+      required: false
+
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Scope
+      options:
+        - Documentation
+        - Accessibility
+        - Browser interaction
+        - Performance
+        - Python toolkit
+        - Research / evaluation
+        - Other
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checklist
+      options:
+        - label: This request does not require a clinical or diagnostic claim.
+          required: true
+        - label: I searched existing issues and discussions.
+          required: true
+        - label: I understand this project is a research prototype.
+          required: true

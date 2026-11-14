@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-labelledby="title desc">
+  <title id="title">SurgicalAir system architecture</title>
+  <desc id="desc">A five-stage pipeline: input, perception, signal engine, adapters, and applications, with a privacy boundary keeping video on the device.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#060a12"/>
+      <stop offset="1" stop-color="#0a1422"/>
+    </linearGradient>
+    <linearGradient id="flow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#35e0d0"/>
+      <stop offset="0.6" stop-color="#4c8dff"/>
+      <stop offset="1" stop-color="#a78bfa"/>
+    </linearGradient>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M30 0H0V30" fill="none" stroke="#7dd3fc" stroke-opacity="0.05"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#4c8dff"/>
+    </marker>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="10" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="640" rx="26" fill="url(#bg)"/>
+  <rect width="1200" height="640" rx="26" fill="url(#grid)"/>
+  <circle cx="1120" cy="60" r="220" fill="#35e0d0" fill-opacity="0.05"/>
+  <circle cx="60" cy="600" r="220" fill="#4c8dff" fill-opacity="0.06"/>
+
+  <g font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif">
+    <text x="48" y="58" fill="#35e0d0" font-size="12" font-weight="700" letter-spacing="3">SYSTEM ARCHITECTURE</text>
+    <text x="48" y="98" fill="#f4f8ff" font-size="32" font-weight="700" letter-spacing="-0.5">One pipeline. Interchangeable ends.</text>
+    <text x="48" y="126" fill="#8fa3bf" font-size="14">The perception layer does not care what the hand is controlling. That is why the same core can drive an image viewer, a game, or a prototype device.</text>
+  </g>
+
+  <g font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif">
+    <g>
+      <rect x="48" y="168" width="190" height="300" rx="16" fill="#0b1524" stroke="#1e3350"/>
+      <text x="70" y="198" fill="#35e0d0" font-size="11" font-weight="700" letter-spacing="2">01 · INPUT</text>
+      <text x="70" y="224" fill="#f4f8ff" font-size="17" font-weight="700">Sensors</text>
+      <rect x="68" y="244" width="150" height="52" rx="10" fill="#101f33" stroke="#24405f"/>
+      <text x="82" y="266" fill="#c8d7ee" font-size="12.5" font-weight="600">RGB webcam</text>
+      <text x="82" y="284" fill="#61748f" font-size="11">30 fps · local</text>
+      <rect x="68" y="306" width="150" height="52" rx="10" fill="#101f33" stroke="#24405f"/>
+      <text x="82" y="328" fill="#c8d7ee" font-size="12.5" font-weight="600">BLE IMU</text>
+      <text x="82" y="346" fill="#61748f" font-size="11">optional · legacy</text>
+      <rect x="68" y="368" width="150" height="52" rx="10" fill="#101f33" stroke="#24405f"/>
+      <text x="82" y="390" fill="#c8d7ee" font-size="12.5" font-weight="600">Mouse / keyboard</text>
+      <text x="82" y="408" fill="#61748f" font-size="11">always available</text>
+      <text x="70" y="446" fill="#61748f" font-size="11">Fallback is a feature,</text>
+      <text x="70" y="462" fill="#61748f" font-size="11">not an afterthought.</text>
+    </g>
+
+    <g>
+      <rect x="278" y="168" width="190" height="300" rx="16" fill="#0b1524" stroke="#1e3350"/>
+      <text x="300" y="198" fill="#35e0d0" font-size="11" font-weight="700" letter-spacing="2">02 · PERCEPTION</text>
+      <text x="300" y="224" fill="#f4f8ff" font-size="17" font-weight="700">Hand model</text>
+      <rect x="298" y="244" width="150" height="72" rx="10" fill="#102030" stroke="#2a4a60"/>
+      <text x="312" y="266" fill="#c8d7ee" font-size="12.5" font-weight="600">21 landmarks</text>
+      <text x="312" y="284" fill="#61748f" font-size="11">x, y, z + handedness</text>
+      <text x="312" y="300" fill="#61748f" font-size="11">per frame</text>
+      <rect x="298" y="326" width="150" height="52" rx="10" fill="#102030" stroke="#2a4a60"/>
+      <text x="312" y="348" fill="#c8d7ee" font-size="12.5" font-weight="600">GPU inference</text>
+      <text x="312" y="366" fill="#61748f" font-size="11">CPU fallback</text>
+      <rect x="298" y="388" width="150" height="52" rx="10" fill="#102030" stroke="#2a4a60"/>
+      <text x="312" y="410" fill="#c8d7ee" font-size="12.5" font-weight="600">On-device only</text>
+      <text x="312" y="428" fill="#61748f" font-size="11">video never uploaded</text>
+    </g>
+
+    <g>
+      <rect x="508" y="168" width="206" height="300" rx="16" fill="#0b1524" stroke="#2a4a60"/>
+      <rect x="508" y="168" width="206" height="300" rx="16" fill="#35e0d0" fill-opacity="0.03"/>
+      <text x="530" y="198" fill="#35e0d0" font-size="11" font-weight="700" letter-spacing="2">03 · SIGNAL ENGINE</text>
+      <text x="530" y="224" fill="#f4f8ff" font-size="17" font-weight="700">Math that feels right</text>
+      <g font-size="11.5">
+        <rect x="528" y="244" width="166" height="38" rx="9" fill="#102030" stroke="#2a4a60"/>
+        <text x="542" y="261" fill="#c8d7ee" font-weight="600">Pinch</text><text x="542" y="275" fill="#61748f" font-size="10.5">distance(4, 8) ÷ hand size</text>
+        <rect x="528" y="290" width="166" height="38" rx="9" fill="#102030" stroke="#2a4a60"/>
+        <text x="542" y="307" fill="#c8d7ee" font-weight="600">Openness</text><text x="542" y="321" fill="#61748f" font-size="10.5">fingertips ÷ wrist span</text>
+        <rect x="528" y="336" width="166" height="38" rx="9" fill="#102030" stroke="#2a4a60"/>
+        <text x="542" y="353" fill="#c8d7ee" font-weight="600">Rotation</text><text x="542" y="367" fill="#61748f" font-size="10.5">atan2(0 → 9)</text>
+        <rect x="528" y="382" width="166" height="38" rx="9" fill="#102030" stroke="#2a4a60"/>
+        <text x="542" y="399" fill="#c8d7ee" font-weight="600">Smoothing</text><text x="542" y="413" fill="#61748f" font-size="10.5">One Euro + hysteresis</text>
+      </g>
+      <text x="530" y="448" fill="#61748f" font-size="11">Normalize by hand size so</text>
+      <text x="530" y="464" fill="#61748f" font-size="11">distance from camera matters less.</text>
+    </g>
+
+    <g>
+      <rect x="754" y="168" width="190" height="300" rx="16" fill="#0b1524" stroke="#1e3350"/>
+      <text x="776" y="198" fill="#35e0d0" font-size="11" font-weight="700" letter-spacing="2">04 · ADAPTERS</text>
+      <text x="776" y="224" fill="#f4f8ff" font-size="17" font-weight="700">Outputs</text>
+      <rect x="774" y="244" width="150" height="52" rx="10" fill="#101f33" stroke="#24405f"/>
+      <text x="788" y="266" fill="#c8d7ee" font-size="12.5" font-weight="600">Mouse / keys</text>
+      <text x="788" y="284" fill="#61748f" font-size="11">OS-level control</text>
+      <rect x="774" y="306" width="150" height="52" rx="10" fill="#101f33" stroke="#24405f"/>
+      <text x="788" y="328" fill="#c8d7ee" font-size="12.5" font-weight="600">WebSocket</text>
+      <text x="788" y="346" fill="#61748f" font-size="11">remote tools</text>
+      <rect x="774" y="368" width="150" height="52" rx="10" fill="#101f33" stroke="#24405f"/>
+      <text x="788" y="390" fill="#c8d7ee" font-size="12.5" font-weight="600">BLE / serial</text>
+      <text x="788" y="408" fill="#61748f" font-size="11">device prototypes</text>
+      <text x="776" y="446" fill="#61748f" font-size="11">Swap the adapter,</text>
+      <text x="776" y="462" fill="#61748f" font-size="11">keep the perception.</text>
+    </g>
+
+    <g>
+      <rect x="974" y="168" width="178" height="300" rx="16" fill="#0b1524" stroke="#2a4a60"/>
+      <rect x="974" y="168" width="178" height="300" rx="16" fill="#a78bfa" fill-opacity="0.04"/>
+      <text x="996" y="198" fill="#c4b5fd" font-size="11" font-weight="700" letter-spacing="2">05 · APPLICATIONS</text>
+      <text x="996" y="224" fill="#f4f8ff" font-size="17" font-weight="700">Where it helps</text>
+      <g font-size="11.5" fill="#c8d7ee">
+        <text x="996" y="258">◈  Imaging control</text>
+        <text x="996" y="288">◈  Surgical training</text>
+        <text x="996" y="318">◈  Tele-mentoring</text>
+        <text x="996" y="348">◈  Accessibility</text>
+        <text x="996" y="378">◈  Cleanrooms</text>
+        <text x="996" y="408">◈  3D / AR education</text>
+        <text x="996" y="438">◈  Robot teaching</text>
+      </g>
+      <text x="996" y="462" fill="#61748f" font-size="10.5">Prototype targets only.</text>
+    </g>
+  </g>
+
+  <g stroke="url(#flow)" stroke-width="2" fill="none" marker-end="url(#arrow)" opacity="0.9">
+    <path d="M238 318 H 270"/>
+    <path d="M468 318 H 500"/>
+    <path d="M714 318 H 746"/>
+    <path d="M944 318 H 966"/>
+  </g>
+
+  <g font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif">
+    <rect x="48" y="500" width="1104" height="58" rx="14" fill="#0b1524" stroke="#1e3350"/>
+    <path d="M76 520 l7 8 v9 a9 9 0 0 0 18 0 v-9 l7 -8 z" fill="none" stroke="#35e0d0" stroke-width="2" transform="translate(0,-2)"/>
+    <text x="120" y="526" fill="#8ff8ee" font-size="12.5" font-weight="700" letter-spacing="1.2">PRIVACY BOUNDARY</text>
+    <text x="120" y="544" fill="#8fa3bf" font-size="12">Camera frames are processed inside the browser tab. They are not uploaded, recorded, or sent to a server. Progress and high scores use local storage only.</text>
+    <text x="48" y="596" fill="#61748f" font-size="11.5">Repository map: main.py · control_each_single_point_with_rotation_left_right.py · device_model.py · preview.html · assets/site.js</text>
+    <text x="48" y="616" fill="#61748f" font-size="11.5">Status: research prototype. Not a medical device. Not clinically validated. See the safety notice before any clinical or commercial deployment.</text>
+  </g>
+</svg>
