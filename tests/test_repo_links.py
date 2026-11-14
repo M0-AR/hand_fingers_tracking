@@ -49,8 +49,14 @@ class TestRepositoryOrganization(unittest.TestCase):
 
     def test_site_uses_the_organized_paths(self):
         text = (ROOT / "preview.html").read_text(encoding="utf-8")
-        for path in ("assets/css/site.css", "assets/js/core.js", "assets/js/scene.js"):
+        for path in ("assets/css/site.css", "assets/js/core.js", "assets/js/scene.js", "assets/js/landmarks.js"):
             self.assertIn(path, text)
+        self.assertIn("hand-model.js", (ROOT / "assets/js/landmarks.js").read_text(encoding="utf-8"))
+
+    def test_anatomy_explorer_is_wired(self):
+        text = (ROOT / "preview.html").read_text(encoding="utf-8")
+        for marker in ("id=\"anatomy\"", "id=\"landmark-canvas\"", "id=\"landmark-list\"", "assets/js/landmarks.js"):
+            self.assertIn(marker, text)
 
     def test_beginner_guide_heading_and_anchor(self):
         text = README.read_text(encoding="utf-8")
@@ -69,6 +75,8 @@ class TestRepositoryOrganization(unittest.TestCase):
             "assets/css/site.css",
             "assets/js/core.js",
             "assets/js/scene.js",
+            "assets/js/hand-model.js",
+            "assets/js/landmarks.js",
             "assets/img/social-preview.png",
             "assets/media/demo.gif",
             "python/README.md",

@@ -9,6 +9,8 @@ python3 -m py_compile python/*.py
 echo "JavaScript syntax"
 node --check assets/js/core.js
 node --input-type=module --check < assets/js/scene.js
+node --input-type=module --check < assets/js/hand-model.js
+node --input-type=module --check < assets/js/landmarks.js
 
 echo "Required files"
 required=(
@@ -19,6 +21,8 @@ required=(
   assets/css/site.css
   assets/js/core.js
   assets/js/scene.js
+  assets/js/hand-model.js
+  assets/js/landmarks.js
   assets/img/banner.svg
   assets/img/hand-landmarks.svg
   assets/img/architecture.svg
@@ -31,6 +35,7 @@ required=(
   assets/screenshots/quiz.webp
   assets/screenshots/roi.webp
   assets/screenshots/mobile.webp
+  assets/screenshots/anatomy.webp
   python/README.md
   python/basic_tracking.py
   python/full_tracking_demo.py

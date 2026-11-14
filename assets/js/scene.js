@@ -1,43 +1,11 @@
 import * as THREE from 'three';
+import { HAND_POINTS, HAND_BONES } from './hand-model.js';
 
 const $ = (selector, root = document) => root.querySelector(selector);
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 const rand = (min, max) => min + Math.random() * (max - min);
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const SA = window.SA || {};
-
-const HAND_POINTS = [
-  [0, -1.15, 0],
-  [-0.42, -0.78, 0.12],
-  [-0.68, -0.48, 0.18],
-  [-0.86, -0.24, 0.22],
-  [-0.98, -0.02, 0.26],
-  [-0.42, -0.3, 0.1],
-  [-0.48, 0.02, 0.14],
-  [-0.52, 0.3, 0.16],
-  [-0.55, 0.52, 0.18],
-  [-0.13, -0.22, 0.12],
-  [-0.14, 0.14, 0.16],
-  [-0.14, 0.42, 0.18],
-  [-0.14, 0.65, 0.2],
-  [0.16, -0.24, 0.1],
-  [0.2, 0.08, 0.14],
-  [0.23, 0.32, 0.16],
-  [0.25, 0.52, 0.18],
-  [0.42, -0.32, 0.06],
-  [0.52, -0.06, 0.1],
-  [0.57, 0.12, 0.12],
-  [0.6, 0.27, 0.14],
-];
-
-const HAND_BONES = [
-  [0, 1], [1, 2], [2, 3], [3, 4],
-  [0, 5], [5, 6], [6, 7], [7, 8],
-  [5, 9], [9, 10], [10, 11], [11, 12],
-  [9, 13], [13, 14], [14, 15], [15, 16],
-  [13, 17], [17, 18], [18, 19], [19, 20],
-  [0, 17],
-];
 
 const sig = {
   pinch: 0,

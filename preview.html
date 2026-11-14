@@ -60,6 +60,7 @@
       </a>
       <nav class="nav-links" id="nav-links" aria-label="Main navigation">
         <a href="#why">Why</a>
+        <a href="#anatomy">Anatomy</a>
         <a href="#lab">Live lab</a>
         <a href="#game">Game</a>
         <a href="#learn">Learn</a>
@@ -163,11 +164,60 @@
       </div>
     </section>
 
+    <section class="section" id="anatomy">
+      <div class="container">
+        <div class="section-head split reveal">
+          <div>
+            <div class="eyebrow">02 — Anatomy</div>
+            <h2>The hand, in 3D.<br><span class="grad-text">Twenty-one points. No guessing.</span></h2>
+            <p class="lede">This is the same skeleton the live lab reads: one wrist, five knuckles, and fifteen finger joints. Drag to orbit, scroll to zoom, and click any numbered point to see what it is and why it matters.</p>
+          </div>
+          <div class="anatomy-count" aria-hidden="true">
+            <strong>21</strong>
+            <span>landmarks</span>
+            <small>0 — 20</small>
+          </div>
+        </div>
+        <div class="anatomy-grid reveal">
+          <div class="landmark-stage" id="landmark-stage">
+            <canvas id="landmark-canvas" tabindex="0" aria-label="Interactive 3D model of the 21 hand landmarks. Drag to rotate, scroll to zoom, click a point to identify it, or use the landmark buttons."></canvas>
+            <div class="landmark-toolbar">
+              <button class="landmark-btn" type="button" id="landmark-tour" aria-pressed="false">Guided tour</button>
+              <button class="landmark-btn" type="button" id="landmark-labels" aria-pressed="true">Numbers on</button>
+              <button class="landmark-btn" type="button" id="landmark-reset">Reset view</button>
+            </div>
+            <div class="landmark-hint"><span id="landmark-hover">Drag to orbit · Scroll to zoom · Click a point</span></div>
+            <div class="landmark-loader" id="landmark-loader"><i aria-hidden="true"></i> Building the 3D hand…</div>
+            <div class="landmark-fallback" id="landmark-fallback" hidden>WebGL is unavailable in this browser. Use the landmark buttons to explore all 21 points.</div>
+          </div>
+          <aside class="landmark-panel" id="landmark-panel" aria-label="Selected landmark">
+            <div class="landmark-readout">
+              <span class="landmark-index" id="landmark-index">00</span>
+              <div>
+                <strong id="landmark-name">Wrist</strong>
+                <small id="landmark-group">Wrist · anchor</small>
+              </div>
+            </div>
+            <p class="landmark-role" id="landmark-role">The anchor of the hand. Distances and angles are measured from here.</p>
+            <div class="landmark-coords" aria-label="Model-space coordinates">
+              <div><span>X</span><b id="landmark-x">0.00</b><small>left / right</small></div>
+              <div><span>Y</span><b id="landmark-y">-1.15</b><small>down / up</small></div>
+              <div><span>Z</span><b id="landmark-z">0.00</b><small>relative depth</small></div>
+            </div>
+            <p class="landmark-model-note">Model-space values, shown to explain the axes. Camera output uses normalised x/y and relative z, not centimetres.</p>
+            <div class="landmark-legend" id="landmark-legend" aria-label="Landmark groups"></div>
+            <div class="landmark-list" id="landmark-list" role="group" aria-label="Choose a landmark"></div>
+            <p class="landmark-shortcuts">Keyboard: arrows rotate · <kbd>+</kbd>/<kbd>−</kbd> zoom · <kbd>Home</kbd> resets.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <section class="section section-alt" id="lab">
       <div class="container">
         <div class="section-head split reveal">
           <div>
-            <div class="eyebrow">02 — Live lab</div>
+            <div class="eyebrow">03 — Live lab</div>
             <h2>Move your hand.<br><span class="grad-text">Watch the machine listen.</span></h2>
             <p class="lede">Start the camera and the page reads 21 points on your hand in real time. Pinch scales the core, openness expands the particles, and rotation turns the object. No camera? Mouse mode gives you the same signals.</p>
           </div>
@@ -238,7 +288,7 @@
       <div class="container">
         <div class="section-head split reveal">
           <div>
-            <div class="eyebrow">03 — Precision game</div>
+            <div class="eyebrow">04 — Precision game</div>
             <h2>Steer with your hand.<br><span class="grad-text">Learn with your brain.</span></h2>
             <p class="lede">Sterile Flight is a 60-second 3D ring runner. Move to steer the probe, pinch to slow time, and pass through rings. Every ring lights a new node in the Neural Link — a live map of the concepts you are learning. Turn on the Narrator and it speaks each idea aloud.</p>
           </div>
@@ -317,7 +367,7 @@
       <div class="container">
         <div class="section-head split reveal">
           <div>
-            <div class="eyebrow">04 — Zero to hero</div>
+            <div class="eyebrow">05 — Zero to hero</div>
             <h2>Five levels.<br><span class="grad-text">No PhD required.</span></h2>
             <p class="lede">Each level is a short, plain-language step with one idea, one example, and one thing you can do. Work through them in order and you will understand more than most interview candidates.</p>
           </div>
@@ -347,7 +397,12 @@
                   </ul>
                   <p class="level-note">The coordinates are normalized to the image: x and y usually run from 0 to 1. z is relative depth, not centimetres.</p>
                 </div>
-                <img src="assets/img/hand-landmarks.svg" alt="Numbered map of the 21 hand landmarks" width="320" height="430" loading="lazy">
+                <a class="level-3d-card" href="#anatomy">
+                  <span class="level-3d-kicker">INTERACTIVE 3D</span>
+                  <strong>Explore all 21 points</strong>
+                  <span>Drag to orbit, click any joint, and inspect the same skeleton the lab reads.</span>
+                  <em>Open the 3D anatomy explorer <span aria-hidden="true">→</span></em>
+                </a>
               </div>
               <label class="complete-row"><input type="checkbox" class="level-check" data-level="1"> <span>I can name the wrist, the five fingertips, and landmark 9.</span></label>
             </div>
@@ -473,7 +528,7 @@ cv2.destroyAllWindows()</code></pre>
     <section class="section" id="quiz">
       <div class="container">
         <div class="section-head reveal">
-          <div class="eyebrow">05 — The quiz</div>
+          <div class="eyebrow">06 — The quiz</div>
           <h2>Ten questions.<br><span class="grad-text">One honest score.</span></h2>
           <p class="lede">No trick questions. Every answer teaches something. Score 8 or higher and you are thinking like someone who could build this — not just use it.</p>
         </div>
@@ -509,7 +564,7 @@ cv2.destroyAllWindows()</code></pre>
     <section class="section section-alt" id="business">
       <div class="container">
         <div class="section-head reveal">
-          <div class="eyebrow">06 — Business value</div>
+          <div class="eyebrow">07 — Business value</div>
           <h2>Touchless is not a gimmick.<br><span class="grad-text">It is throughput.</span></h2>
           <p class="lede">The value is not “we have hand tracking.” The value is minutes saved per procedure, fewer glove changes, faster training, and a workflow that does not stop when a hand is busy.</p>
         </div>
@@ -600,7 +655,7 @@ cv2.destroyAllWindows()</code></pre>
     <section class="section" id="architecture">
       <div class="container">
         <div class="section-head reveal">
-          <div class="eyebrow">07 — Architecture</div>
+          <div class="eyebrow">08 — Architecture</div>
           <h2>One pipeline.<br><span class="grad-text">Interchangeable ends.</span></h2>
           <p class="lede">The perception layer does not care what the hand is controlling. That is why the same core can drive an image viewer, a game, or a prototype device. Click a layer to see what it does.</p>
         </div>
@@ -640,7 +695,7 @@ cv2.destroyAllWindows()</code></pre>
     <section class="section section-alt" id="research">
       <div class="container">
         <div class="section-head reveal">
-          <div class="eyebrow">08 — Research & evidence</div>
+          <div class="eyebrow">09 — Research & evidence</div>
           <h2>Borrowed science.<br><span class="grad-text">Honest claims.</span></h2>
           <p class="lede">This project stands on published work in hand tracking, signal smoothing, and touchless operating-room interaction. It does not claim clinical validation of its own.</p>
         </div>
@@ -697,7 +752,7 @@ cv2.destroyAllWindows()</code></pre>
     <section class="section" id="roadmap">
       <div class="container">
         <div class="section-head reveal">
-          <div class="eyebrow">09 — Roadmap</div>
+          <div class="eyebrow">10 — Roadmap</div>
           <h2>What is next.<br><span class="muted-text">What is deliberately not.</span></h2>
         </div>
         <div class="roadmap">
@@ -738,7 +793,7 @@ cv2.destroyAllWindows()</code></pre>
     <section class="section section-alt" id="faq">
       <div class="container faq-wrap">
         <div class="section-head reveal">
-          <div class="eyebrow">10 — Questions</div>
+          <div class="eyebrow">11 — Questions</div>
           <h2>Ask the awkward ones.</h2>
           <p class="lede">The answers are short on purpose. If something is still unclear, open an issue — the question is probably shared by someone else.</p>
         </div>
@@ -793,6 +848,7 @@ cv2.destroyAllWindows()</code></pre>
       </div>
       <div class="footer-col">
         <span>EXPLORE</span>
+        <a href="#anatomy">Anatomy in 3D</a>
         <a href="#lab">Live lab</a>
         <a href="#game">Precision game</a>
         <a href="#learn">Five levels</a>
@@ -834,5 +890,6 @@ cv2.destroyAllWindows()</code></pre>
   </script>
   <script src="assets/js/core.js" defer></script>
   <script type="module" src="assets/js/scene.js"></script>
+  <script type="module" src="assets/js/landmarks.js"></script>
 </body>
 </html>

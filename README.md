@@ -30,7 +30,7 @@
 
 The project exists because modern work has a quiet contradiction: computers expect touch, while many environments — surgical fields, cleanrooms, laboratories, kitchens, and accessibility contexts — punish it. SurgicalAir closes that gap in software. No new hardware. No new surface to sterilise. No video leaves the device.
 
-It is packaged as a complete, honest starting point for research and product exploration: a zero-install browser laboratory, a 3D precision game that teaches the underlying concepts, a five-level beginner curriculum, a ten-question assessment, an interactive business-value model, and a small Python toolkit for webcam and Bluetooth prototyping.
+It is packaged as a complete, honest starting point for research and product exploration: a zero-install browser laboratory with an interactive 3D anatomy explorer, a 3D precision game that teaches the underlying concepts, a five-level beginner curriculum, a ten-question assessment, an interactive business-value model, and a small Python toolkit for webcam and Bluetooth prototyping.
 
 > **One sentence for a busy decision-maker:** SurgicalAir demonstrates, today, that a normal camera plus open software can deliver usable touchless control — and it lays out exactly what must be proven before anyone calls it a product.
 
@@ -117,6 +117,7 @@ SurgicalAir is a working demonstration of that missing piece, plus a clear map o
 
 | Experience | What it is | Why it matters |
 | --- | --- | --- |
+| **3D Anatomy Explorer** | A rotatable, clickable model of all 21 hand landmarks | See exactly what the model measures and why the axes matter |
 | **3D Live Lab** | A real-time 3D scene controlled by your hand or mouse | Feel the interaction in seconds, not slides |
 | **Precision Game** | A 60-second 3D ring-runner with a growing "Neural Link" | Learn the concepts by playing, with optional narration |
 | **Five-Level Curriculum** | A plain-language path from landmarks to production | Take anyone from zero to a confident explanation |
@@ -135,11 +136,12 @@ SurgicalAir is a working demonstration of that missing piece, plus a clear map o
 ### Option A — open the live site (recommended)
 
 1. Open <https://m0-ar.github.io/hand_fingers_tracking/>
-2. Scroll to **Live Lab**.
-3. Click **Start camera** and allow access — **or** click **Mouse mode** if you do not want to use a camera.
-4. Move inside the 3D viewport. Hold click to pinch. Try the **Neural web** and **Sterile field** scenes.
-5. Scroll to the **Precision Game** and press **Start run**.
-6. Finish with the **quiz** and the five-level guide.
+2. Scroll to **Anatomy**. Drag the 3D hand, scroll to zoom, and click any of the 21 numbered joints.
+3. Scroll to **Live Lab**.
+4. Click **Start camera** and allow access — **or** click **Mouse mode** if you do not want to use a camera.
+5. Move inside the 3D viewport. Hold click to pinch. Try the **Neural web** and **Sterile field** scenes.
+6. Scroll to the **Precision Game** and press **Start run**.
+7. Finish with the **quiz** and the five-level guide.
 
 > Camera access requires **HTTPS** or **localhost**. The live site is HTTPS. If camera access is blocked, mouse mode gives you the same signals.
 
@@ -228,6 +230,8 @@ For the full Python guide, see [`python/README.md`](python/README.md).
 <div align="center">
 <img src="assets/img/hand-landmarks.svg" alt="A numbered map of the 21 hand landmarks: wrist 0, thumb tip 4, index tip 8, middle tip 12, ring tip 16, pinky tip 20." width="440">
 </div>
+
+GitHub renders Markdown as text, so the diagram above is static here. On the live site, the same skeleton is **fully interactive 3D** — drag to orbit, scroll to zoom, click any numbered point for its name and role, or take a guided tour: **[Open the 3D anatomy explorer →](https://m0-ar.github.io/hand_fingers_tracking/#anatomy)**
 
 A **landmark** is simply a named point on the hand. The model returns 21 of them for every frame in which it sees a hand.
 
@@ -376,6 +380,8 @@ Hold up your hand. Count the places where it bends: the wrist, the knuckles, the
 - Landmark **9** is the middle knuckle — a stable centre.
 - `x` and `y` are positions in the image. `z` is relative depth, not distance.
 
+**See it in 3D:** on the live site, the same hand is a model you can rotate, zoom, and click. Open the [3D anatomy explorer](https://m0-ar.github.io/hand_fingers_tracking/#anatomy) and take the guided tour.
+
 **Checkpoint:** can you name the wrist, the five fingertips, and landmark 9 without looking?
 
 ---
@@ -517,6 +523,9 @@ That is enough to hold a credible conversation about touchless interfaces — an
 ### Hero — the first screen
 <img src="assets/screenshots/hero.webp" alt="The SurgicalAir hero with the headline Control the machine. Touch nothing., signal preview, and a 3D hand skeleton." width="100%">
 
+### Anatomy — all 21 landmarks, in 3D
+<img src="assets/screenshots/anatomy.webp" alt="The SurgicalAir 3D anatomy explorer showing a numbered hand skeleton, a selected landmark panel with X, Y, and Z values, and a grid of all 21 landmark buttons." width="100%">
+
 ### Live Lab — hand signals, three 3D scenes, mouse fallback
 <img src="assets/screenshots/lab.webp" alt="The SurgicalAir Live Lab showing a glowing 3D core, pinch/openness/rotation bars, and a control panel." width="100%">
 
@@ -550,7 +559,9 @@ hand_fingers_tracking/
 │   │   └── site.css                 # Design system and responsive layout
 │   ├── js/
 │   │   ├── core.js                  # UI, quiz, curriculum, ROI model, Neural Link, narration
-│   │   └── scene.js                 # Three.js hero, 3D lab, game, camera and MediaPipe integration
+│   │   ├── scene.js                 # Three.js hero, 3D lab, game, camera and MediaPipe integration
+│   │   ├── hand-model.js            # Shared 21-point skeleton, bones, names, and landmark groups
+│   │   └── landmarks.js             # Interactive 3D anatomy explorer
 │   ├── img/
 │   │   ├── banner.svg               # README banner
 │   │   ├── hand-landmarks.svg       # The 21-point anatomy diagram
@@ -559,7 +570,7 @@ hand_fingers_tracking/
 │   │   └── social-preview.png       # 1280×640 social sharing image
 │   ├── media/
 │   │   └── demo.gif                 # Animated demonstration
-│   └── screenshots/                 # Hero, lab, game, quiz, ROI, and mobile screenshots
+│   └── screenshots/                 # Hero, anatomy, lab, game, quiz, ROI, and mobile screenshots
 │
 ├── python/
 │   ├── README.md                    # Python toolkit guide
