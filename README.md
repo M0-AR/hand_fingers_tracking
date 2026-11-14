@@ -357,7 +357,7 @@ This guide assumes **zero** background. No maths degree. No computer-vision cour
 
 > "Let's work this out in a step-by-step way to be sure we have the right answer."
 
-By the end, you will be able to explain how a webcam becomes a gesture, why the maths works, what breaks in the real world, and what must happen before a prototype becomes a product. **You will know more than most interview candidates.**
+By the end, you will be able to explain how a webcam becomes a gesture, why the mathematics works, what breaks in the real world, and what must happen before a prototype becomes a product. **You will know more than most interview candidates.**
 
 ---
 
