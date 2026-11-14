@@ -1,7 +1,7 @@
 import asyncio
 import os
 import bleak
-import device_model
+import ble_device
 
 # 扫描到的设备 Scanned devices
 devices = []
@@ -43,7 +43,7 @@ if __name__ == '__main__':
             break
     if device_mac is not None:
         # 创建设备 Create device
-        device = device_model.DeviceModel("MyBle5.0", device_mac, updateData)
+        device = ble_device.DeviceModel("MyBle5.0", device_mac, updateData)
         asyncio.run(device.openDevice())
     else:
         print("No Bluetooth device corresponding to Mac address found!!")

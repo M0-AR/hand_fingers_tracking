@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   verify:
-    name: Verify syntax and required files
+    name: Verify repository
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -22,40 +22,10 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Compile Python demos
-        run: python -m py_compile *.py
-
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "20"
 
-      - name: Check JavaScript syntax
-        run: |
-          node --check assets/core.js
-          node --input-type=module --check < assets/scene.js
-
-      - name: Verify required files exist
-        run: |
-          test -f preview.html
-          test -f index.html
-          test -f .nojekyll
-          test -f assets/site.css
-          test -f assets/core.js
-          test -f assets/scene.js
-          test -f assets/demo.gif
-          test -f assets/screenshots/lab.webp
-          test -f assets/screenshots/game.webp
-          test -f assets/screenshots/quiz.webp
-          test -f assets/screenshots/mobile.webp
-          test -f assets/screenshots/roi.webp
-          test -f assets/social-preview.png
-          test -f LICENSE
-          test -f README.md
-
-      - name: Check for accidental local-only paths
-        run: |
-          if grep -RIn --exclude-dir=.git --exclude='demo.gif' 'file:///home/' .; then
-            echo "Found a local absolute path in a tracked file."
-            exit 1
-          fi
+      - name: Run repository checks
+        run: bash scripts/verify.sh

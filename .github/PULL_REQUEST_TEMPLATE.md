@@ -11,7 +11,7 @@
 <!--
 List the commands, browsers, or devices you used. Examples:
 - python3 -m py_compile *.py
-- node --check assets/core.js
+- node --check assets/js/core.js
 - Opened preview.html in Chrome with mouse mode and no console errors
 -->
 

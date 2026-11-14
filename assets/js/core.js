@@ -186,7 +186,7 @@
         'BLE IMU packets parsed as a legacy bridge.',
         'Mouse and keyboard never removed.',
       ],
-      files: 'main.py · device_model.py',
+      files: 'python/basic_tracking.py · python/ble_device.py',
     },
     {
       kicker: 'LAYER 02',
@@ -198,7 +198,7 @@
         'Raw landmarks are kept; smoothing happens later.',
         'Handedness helps disambiguate left from right.',
       ],
-      files: 'main.py · control_each_single_point.py',
+      files: 'python/basic_tracking.py · python/track_landmarks.py',
     },
     {
       kicker: 'LAYER 03',
@@ -210,7 +210,7 @@
         'Openness = mean fingertip reach ÷ palm length.',
         'Rotation = wrist-to-middle-knuckle angle.',
       ],
-      files: 'control_each_single_point_with_rotation.py',
+      files: 'python/track_rotation.py',
     },
     {
       kicker: 'LAYER 04',
@@ -222,7 +222,7 @@
         'The BLE bridge is for prototyping, not clinical use.',
         'Adapters can be swapped without touching perception.',
       ],
-      files: 'device_model.py · left/right demo',
+      files: 'python/ble_device.py · python/full_tracking_demo.py',
     },
     {
       kicker: 'LAYER 05',

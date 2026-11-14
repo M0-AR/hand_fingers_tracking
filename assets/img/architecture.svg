@@ -134,7 +134,7 @@
     <path d="M76 520 l7 8 v9 a9 9 0 0 0 18 0 v-9 l7 -8 z" fill="none" stroke="#35e0d0" stroke-width="2" transform="translate(0,-2)"/>
     <text x="120" y="526" fill="#8ff8ee" font-size="12.5" font-weight="700" letter-spacing="1.2">PRIVACY BOUNDARY</text>
     <text x="120" y="544" fill="#8fa3bf" font-size="12">Camera frames are processed inside the browser tab. They are not uploaded, recorded, or sent to a server. Progress and high scores use local storage only.</text>
-    <text x="48" y="596" fill="#61748f" font-size="11.5">Repository map: main.py · control_each_single_point_with_rotation_left_right.py · device_model.py · preview.html · assets/site.js</text>
+    <text x="48" y="596" fill="#61748f" font-size="11.5">Repository map: python/basic_tracking.py · python/full_tracking_demo.py · python/ble_device.py · preview.html · assets/js/scene.js</text>
     <text x="48" y="616" fill="#61748f" font-size="11.5">Status: research prototype. Not a medical device. Not clinically validated. See the safety notice before any clinical or commercial deployment.</text>
   </g>
 </svg>

@@ -39,7 +39,7 @@ Camera access requires `localhost` or HTTPS. Mouse mode requires neither.
 python3 -m venv .venv
 source .venv/bin/activate        # Windows: .venv\Scripts\Activate.ps1
 pip install -r requirements.txt
-python3 main.py
+python3 python/basic_tracking.py
 ```
 
 ## Verification
@@ -48,8 +48,8 @@ Run these checks before opening a pull request:
 
 ```bash
 python3 -m py_compile *.py
-node --check assets/core.js
-node --input-type=module --check < assets/scene.js
+node --check assets/js/core.js
+node --input-type=module --check < assets/js/scene.js
 ```
 
 Then verify in a browser:

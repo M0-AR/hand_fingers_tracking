@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/banner.svg" alt="SurgicalAir — control the machine, touch nothing. A 21-point hand skeleton on a dark technical banner." width="100%">
+<img src="assets/img/banner.svg" alt="SurgicalAir — control the machine, touch nothing. A 21-point hand skeleton on a dark technical banner." width="100%">
 
 # SurgicalAir
 
@@ -40,7 +40,7 @@ It is packaged as a complete, honest starting point for research and product exp
 
 <div align="center">
 
-![SurgicalAir demo — the 3D precision game running while the Neural Link unlocks concepts](assets/demo.gif)
+![SurgicalAir demo — the 3D precision game running while the Neural Link unlocks concepts](assets/media/demo.gif)
 
 <sub>The 3D precision game: steer, focus time, pass rings, and grow the Neural Link. Every ring teaches one concept.</sub>
 
@@ -191,40 +191,42 @@ pip install -r requirements.txt
 
 | File | What it demonstrates |
 | --- | --- |
-| `main.py` | Minimal webcam loop: detect a hand, draw 21 landmarks, classify open vs closed |
-| `control_each_single_point.py` | Track one landmark at a time and print its position |
-| `control_each_single_point_with_rotation.py` | Add wrist rotation and finger joint angles |
-| `control_each_single_point_with_rotation_left_right.py` | The fullest demo: distance, rotation, joint angles, left/right handedness |
-| `github_example.py` | Save annotated frames to an output folder for documentation |
-| `device_model.py` | A small BLE device model used by the sensor bridge |
-| `test.py` | Scan for a compatible BLE sensor and stream its data |
+| `python/basic_tracking.py` | Minimal webcam loop: detect a hand, draw 21 landmarks, classify open vs closed |
+| `python/track_landmarks.py` | Track one landmark at a time and print its position |
+| `python/track_rotation.py` | Add wrist rotation and finger joint angles |
+| `python/full_tracking_demo.py` | The fullest demo: distance, rotation, joint angles, left/right handedness |
+| `python/save_annotated_frames.py` | Save annotated frames to an output folder for documentation |
+| `python/ble_device.py` | A small BLE device model used by the sensor bridge |
+| `python/scan_ble_sensor.py` | Scan for a compatible BLE sensor and stream its data |
 
 Run the main demo:
 
 ```bash
-python3 main.py
+python3 python/basic_tracking.py
 ```
 
 Press **q** in the video window to quit.
 
 ### Bluetooth sensor bridge (optional)
 
-`test.py` and `device_model.py` talk to a compatible WitMotion-style BLE IMU. The bridge is included for prototyping sensor fusion. It is **not** required for the webcam experience and it is **not** a medical-grade communication layer.
+`python/scan_ble_sensor.py` and `python/ble_device.py` talk to a compatible WitMotion-style BLE IMU. The bridge is included for prototyping sensor fusion. It is **not** required for the webcam experience and it is **not** a medical-grade communication layer.
 
 Set your sensor address through an environment variable rather than editing the file:
 
 ```bash
-BLE_MAC="AA:BB:CC:DD:EE:FF" python3 test.py
+BLE_MAC="AA:BB:CC:DD:EE:FF" python3 python/scan_ble_sensor.py
 ```
 
 If no sensor is present, the webcam demos are unaffected. Treat the BLE path as experimental.
+
+For the full Python guide, see [`python/README.md`](python/README.md).
 
 ---
 
 ## The 21 landmarks
 
 <div align="center">
-<img src="assets/hand-landmarks.svg" alt="A numbered map of the 21 hand landmarks: wrist 0, thumb tip 4, index tip 8, middle tip 12, ring tip 16, pinky tip 20." width="440">
+<img src="assets/img/hand-landmarks.svg" alt="A numbered map of the 21 hand landmarks: wrist 0, thumb tip 4, index tip 8, middle tip 12, ring tip 16, pinky tip 20." width="440">
 </div>
 
 A **landmark** is simply a named point on the hand. The model returns 21 of them for every frame in which it sees a hand.
@@ -249,7 +251,7 @@ Each point has three numbers:
 ## How it works
 
 <div align="center">
-<img src="assets/architecture.svg" alt="Five-stage architecture: input, perception, signal engine, adapters, applications, with a privacy boundary keeping video on-device." width="100%">
+<img src="assets/img/architecture.svg" alt="Five-stage architecture: input, perception, signal engine, adapters, applications, with a privacy boundary keeping video on-device." width="100%">
 </div>
 
 Every hand-tracking application is the same loop:
@@ -502,7 +504,7 @@ If you want the shortest route to real understanding:
 1. **5 min** — open the Live Lab, use mouse mode, watch which signal changes.
 2. **5 min** — play one round of the Precision Game with the Narrator on.
 3. **5 min** — read Levels 2 and 3 above, then take the quiz.
-4. **5 min** — open `main.py` and trace the loop line by line.
+4. **5 min** — open `python/basic_tracking.py` and trace the loop line by line.
 
 That is enough to hold a credible conversation about touchless interfaces — and to spot the difference between a demo and a validated product.
 
@@ -511,6 +513,9 @@ That is enough to hold a credible conversation about touchless interfaces — an
 ## Screenshots
 
 <div align="center">
+
+### Hero — the first screen
+<img src="assets/screenshots/hero.webp" alt="The SurgicalAir hero with the headline Control the machine. Touch nothing., signal preview, and a 3D hand skeleton." width="100%">
 
 ### Live Lab — hand signals, three 3D scenes, mouse fallback
 <img src="assets/screenshots/lab.webp" alt="The SurgicalAir Live Lab showing a glowing 3D core, pinch/openness/rotation bars, and a control panel." width="100%">
@@ -538,35 +543,48 @@ hand_fingers_tracking/
 ├── preview.html                     # The full interactive experience (3D, lab, game, quiz, business)
 ├── index.html                       # Entry point; redirects to preview.html for GitHub Pages
 ├── .nojekyll                        # Tells GitHub Pages to serve files as-is
+├── Makefile                         # make serve, make check, make test
 │
 ├── assets/
-│   ├── site.css                     # Design system and responsive layout
-│   ├── core.js                      # UI, quiz, curriculum, ROI model, Neural Link, narration
-│   ├── scene.js                     # Three.js hero, 3D lab, game, camera and MediaPipe integration
-│   ├── banner.svg                   # README banner
-│   ├── hand-landmarks.svg           # The 21-point anatomy diagram
-│   ├── architecture.svg             # Five-stage system architecture
-│   ├── favicon.svg                  # Browser icon
-│   ├── social-preview.png           # 1280×640 social sharing image
-│   ├── demo.gif                     # Animated demonstration
-│   └── screenshots/                 # Lab, game, quiz, ROI, and mobile screenshots
+│   ├── css/
+│   │   └── site.css                 # Design system and responsive layout
+│   ├── js/
+│   │   ├── core.js                  # UI, quiz, curriculum, ROI model, Neural Link, narration
+│   │   └── scene.js                 # Three.js hero, 3D lab, game, camera and MediaPipe integration
+│   ├── img/
+│   │   ├── banner.svg               # README banner
+│   │   ├── hand-landmarks.svg       # The 21-point anatomy diagram
+│   │   ├── architecture.svg         # Five-stage system architecture
+│   │   ├── favicon.svg              # Browser icon
+│   │   └── social-preview.png       # 1280×640 social sharing image
+│   ├── media/
+│   │   └── demo.gif                 # Animated demonstration
+│   └── screenshots/                 # Hero, lab, game, quiz, ROI, and mobile screenshots
 │
-├── main.py                          # Minimal webcam hand-tracking demo
-├── control_each_single_point.py     # Track one landmark
-├── control_each_single_point_with_rotation.py
-├── control_each_single_point_with_rotation_left_right.py
-├── github_example.py                # Save annotated frames to disk
-├── device_model.py                  # BLE device model
-├── test.py                          # BLE sensor scanner and stream
-├── orginal.py                       # Byte-identical early copy of main.py (kept for history)
+├── python/
+│   ├── README.md                    # Python toolkit guide
+│   ├── basic_tracking.py            # Minimal webcam hand-tracking demo
+│   ├── track_landmarks.py           # Track one landmark
+│   ├── track_rotation.py            # Rotation and finger joint angles
+│   ├── full_tracking_demo.py        # Distance, rotation, angles, left/right handedness
+│   ├── save_annotated_frames.py     # Save annotated frames to disk
+│   ├── ble_device.py                # BLE device model
+│   └── scan_ble_sensor.py           # BLE sensor scanner and stream
 │
+├── tests/
+│   └── test_repo_links.py           # Local link and required-file checks
+├── scripts/
+│   └── verify.sh                    # One command to verify the whole repository
+├── .github/                         # CI, issue forms, and pull-request template
 ├── requirements.txt                 # Python dependencies
 ├── README.md                        # This document
 ├── CONTRIBUTING.md                  # How to contribute
 ├── CODE_OF_CONDUCT.md               # Community standards
 ├── SECURITY.md                      # How to report a vulnerability
 ├── CITATION.cff                     # How to cite the project
-└── LICENSE                          # MIT
+├── LICENSE                          # MIT
+├── .editorconfig                    # Consistent whitespace across editors
+└── .gitignore                       # Local files that should never be committed
 ```
 
 ---
@@ -576,8 +594,8 @@ hand_fingers_tracking/
 | You are… | Start here | What you get |
 | --- | --- | --- |
 | **A complete beginner** | [Beginner Guide](#-beginner-guide--read-this-and-you-are-a-professional) | A clear mental model, no jargon |
-| **A student or job candidate** | Beginner Guide → Quiz → `main.py` | A portfolio-grade explanation of a real system |
-| **A developer** | Live Lab → `assets/scene.js` → Python demos | Working code to extend |
+| **A student or job candidate** | Beginner Guide → Quiz → `python/basic_tracking.py` | A portfolio-grade explanation of a real system |
+| **A developer** | Live Lab → `assets/js/scene.js` → Python demos | Working code to extend |
 | **A researcher** | [Evidence](#evidence-and-honest-claims) → [Limitations](#safety-and-limitations) | Clear claims, known gaps, citable foundations |
 | **A founder or product lead** | [Business value](#business-value) | A pilot-shaped conversation, not hype |
 | **A clinician or hospital innovator** | [Safety](#safety-and-limitations) → [Roadmap](#roadmap) | The validation path before any clinical use |

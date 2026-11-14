@@ -12,18 +12,18 @@
   <meta property="og:title" content="SurgicalAir — Control the machine. Touch nothing.">
   <meta property="og:description" content="A webcam becomes a 21-point hand sensor. A browser becomes a touchless control layer. Try the live lab, the 3D game, and the zero-to-hero guide.">
   <meta property="og:url" content="https://m0-ar.github.io/hand_fingers_tracking/preview.html">
-  <meta property="og:image" content="https://m0-ar.github.io/hand_fingers_tracking/assets/social-preview.png">
+  <meta property="og:image" content="https://m0-ar.github.io/hand_fingers_tracking/assets/img/social-preview.png">
   <meta property="og:image:width" content="1280">
   <meta property="og:image:height" content="640">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="SurgicalAir — Control the machine. Touch nothing.">
   <meta name="twitter:description" content="Try a browser-based touchless hand-tracking lab, a 3D precision game, and a full learning path. On-device. MIT.">
-  <meta name="twitter:image" content="https://m0-ar.github.io/hand_fingers_tracking/assets/social-preview.png">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <meta name="twitter:image" content="https://m0-ar.github.io/hand_fingers_tracking/assets/img/social-preview.png">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="assets/css/site.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -347,7 +347,7 @@
                   </ul>
                   <p class="level-note">The coordinates are normalized to the image: x and y usually run from 0 to 1. z is relative depth, not centimetres.</p>
                 </div>
-                <img src="assets/hand-landmarks.svg" alt="Numbered map of the 21 hand landmarks" width="320" height="430" loading="lazy">
+                <img src="assets/img/hand-landmarks.svg" alt="Numbered map of the 21 hand landmarks" width="320" height="430" loading="lazy">
               </div>
               <label class="complete-row"><input type="checkbox" class="level-check" data-level="1"> <span>I can name the wrist, the five fingertips, and landmark 9.</span></label>
             </div>
@@ -631,7 +631,7 @@ cv2.destroyAllWindows()</code></pre>
               <li>BLE IMU packets parsed as a legacy bridge.</li>
               <li>Mouse and keyboard never removed.</li>
             </ul>
-            <div class="arch-files"><span>FILES</span><code>main.py · device_model.py</code></div>
+            <div class="arch-files"><span>FILES</span><code>python/basic_tracking.py · python/ble_device.py</code></div>
           </div>
         </div>
       </div>
@@ -832,7 +832,7 @@ cv2.destroyAllWindows()</code></pre>
       }
     }
   </script>
-  <script src="assets/core.js" defer></script>
-  <script type="module" src="assets/scene.js"></script>
+  <script src="assets/js/core.js" defer></script>
+  <script type="module" src="assets/js/scene.js"></script>
 </body>
 </html>
